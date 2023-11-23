@@ -48,6 +48,16 @@ def predict(setToPredict ,lags, steps):
     print("\n")
     return pred
 
+def printScore(realData, predictedData):
+    mape = mean_absolute_percentage_error(realData, predictedData)
+    r2 = r2_score(realData, predictedData)
+    txt = f"SCORE\nmape: {mape:.5}\nr2: {r2:.5}"
+    plt.text(0.5, 0.5, txt)
+    print("___SCORE___")
+    print(f"mape: {mape:.5}")
+    print(f"r2: {r2:.5}")
+
+
 # DATA PREP
 
 #all data
@@ -127,33 +137,36 @@ print(f"\nTRAINING TIME: {(end - start):.3} s")
 
 # PREDIZIONI
 
-# #sul training set
-# start = time.time()
-# predTraining = predict(trainingSet, LAGS[0], STEPS)
-# plt.plot(trainingSet, label="predizione set training")
-# end = time.time()
-# print(f"predizione sul training set: {int(end-start)} s")
+#sul training set
+start = time.time()
+predVal = predict(trainingSet, LAGS[0], STEPS)
+plt.plot(predVal, label="predizione Training set")
+end = time.time()
+print(f"predizione sul Training set: {int(end-start)} s")
+printScore(allData.loc[predVal.index].values, predVal.values)
+
 
 #sul validation set
 start = time.time()
 predVal = predict(validationSet, LAGS[0], STEPS)
-plt.plot(predVal, label="predizione validation set")
+plt.plot(predVal, label="predizione Validation set")
 end = time.time()
 print(f"predizione sul validation set: {int(end-start)} s")
-print(predVal.values)
+printScore(allData.loc[predVal.index].values, predVal.values)
+
+
+#sullo strange set
+start = time.time()
+predVal = predict(strangeData, LAGS[0], STEPS)
+plt.plot(predVal, label="predizione Strange set")
+end = time.time()
+print(f"predizione sulo Strange set: {int(end-start)} s")
+#evito di inserire le previsioni non presenti nei dati per fare lo score
+printScore(allData.loc[predVal.iloc[:-STEPS+1].index].values, predVal.iloc[:-STEPS+1].values)
 
 
 
-# #sullo strange set
-# start = time.time()
-# predStrange = predict(strangeData, LAGS[0], STEPS)
-# plt.plot(predStrange, label="predizione set anomalo")
-# end = time.time()
-# print(f"predizione sullo strange set: {int(end-start)} s")
-
-
-
-
+plt.text(0.5, 0.5, "Giao")
 
 plt.legend()
 plt.show()
