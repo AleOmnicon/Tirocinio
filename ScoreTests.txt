@@ -1,0 +1,233 @@
+TRAINING TIME: 6.68 s
+
+predizione sul validation set: 152 s
+___SCORE___
+mape: 0.011822
+r2: 0.62457
+
+guardando le 48.0 ore precedenti
+
+
+
+TRAINING TIME: 1.94 s
+
+predizione sul validation set: 36 s
+___SCORE___
+mape: 0.009844
+r2: 0.72074
+
+guardando le 24.0 ore precedenti
+
+
+
+TRAINING TIME: 2.17 s
+
+predizione sul validation set: 35 s
+___SCORE___
+mape: 0.009844
+r2: 0.72074
+
+guardando le 24.0 ore precedenti
+
+
+
+TRAINING TIME: 1.89 s
+
+predizione sul validation set: 55 s
+___SCORE___
+mape: 0.0098427
+r2: 0.72084
+guardando le 24.0 ore precedenti
+
+
+
+TRAINING TIME: 7.75 s
+
+predizione sul validation set: 58 s
+___SCORE___
+mape: 0.0096774
+r2: 0.7257
+guardando le 24.0 ore precedenti
+
+
+
+TRAINING TIME: 3.9 s
+
+predizione sul validation set: 56 s
+___SCORE___
+mape: 0.012108
+r2: 0.64074
+guardando le 12.0 ore precedenti
+
+
+
+TRAINING TIME: 3.75 s
+
+predizione sul validation set: 38 s
+___SCORE___
+mape: 0.0092998
+r2: 0.79493
+guardando le 12.0 ore precedenti
+
+
+
+TRAINING TIME: 7.26 s
+
+predizione sul validation set: 36 s
+___SCORE___
+mape: 0.0079649
+r2: 0.82804
+guardando le 24.0 ore precedenti
+
+
+
+TRAINING TIME: 15.0 s
+
+predizione sul validation set: 37 s
+___SCORE___
+mape: 0.007785
+r2: 0.83869
+guardando le 48.0 ore precedenti
+
+
+
+TRAINING TIME: 15.0 s
+
+predizione sul validation set: 46 s
+___SCORE___
+mape: 0.0084211
+r2: 0.80327
+
+guardando le 48.0 ore precedenti
+
+
+
+TRAINING TIME: 10.9 s
+
+predizione sul validation set: 46 s
+___SCORE___
+mape: 0.0085185
+r2: 0.79519
+
+guardando le 36.0 ore precedenti
+
+
+
+TRAINING TIME: 8.01 s
+
+predizione sul validation set: 46 s
+___SCORE___
+mape: 0.0086325
+r2: 0.78967
+
+Predette le 3.0 ore successive
+guardando le 24.0 ore precedenti
+
+
+
+TRAINING TIME: 11.7 s
+
+predizione sul validation set: 198 s
+___SCORE___
+mape: 0.012218
+r2: 0.57182
+
+Predette le 12.0 ore successive
+guardando le 36.0 ore precedenti
+
+
+
+TRAINING TIME: 27.9 s
+
+predizione sul validation set: 189 s
+___SCORE___
+mape: 0.011838
+r2: 0.61635
+
+Predette le 12.0 ore successive
+guardando le 72.0 ore precedenti
+
+
+
+TRAINING TIME: 20.7 s
+
+predizione sul validation set: 158 s
+___SCORE___
+mape: 0.011764
+r2: 0.61871
+
+Predette le 12.0 ore successive
+guardando le 60.0 ore precedenti
+
+
+
+TRAINING TIME: 28.9 s
+
+predizione sul validation set: 344 s
+___SCORE___
+mape: 0.01136
+r2: 0.65058
+
+Predette le 24.0 ore successive
+guardando le 48.0 ore precedenti
+
+
+
+TRAINING TIME: 15.0 s
+
+predizione sul validation set: 158 s
+___SCORE___
+mape: 0.011622
+r2: 0.61927
+
+Predette le 12.0 ore successive
+guardando le 48.0 ore precedenti
+
+
+
+TRAINING TIME: 15.7 s
+
+predizione sul validation set: 491 s
+___SCORE___
+mape: 0.013936
+r2: 0.48021
+
+Predette le 36.0 ore successive
+guardando le 48.0 ore precedenti
+
+
+
+TRAINING TIME: 15.5 s
+
+predizione sul validation set: 849 s
+___SCORE___
+mape: 0.015243
+r2: 0.40285
+
+Predette le 48.0 ore successive
+guardando le 48.0 ore precedenti
+
+
+
+TRAINING TIME: 41.0 s
+
+predizione sul validation set: 538 s
+___SCORE___
+mape: 0.014349
+r2: 0.47216
+
+Predette le 48.0 ore successive
+guardando le 96.0 ore precedenti
+
+
+
+TRAINING TIME: 3.89 s
+predizione sul validation set: 8 s
+___SCORE___
+mape: 0.0029307
+r2: 0.98537
+
+Predette le 0.25 ore successive
+guardando le 12.0 ore precedenti
+
+

@@ -17,11 +17,12 @@ from skforecast.model_selection import grid_search_forecaster
 DATE_LIMITER = "2023-08-01 00:00:00"
 TRAIN_SET_PERC = 0.8
 LAGS = [48, 96, 144, 192, 240, 288, 384, 480] # guardando le n/4 ore precedenti
-STEPS = 4*48 # predici le *n ore successive
-lags = LAGS[6]
+STEPS = 1 # predici le *n ore successive
+lags = LAGS[0]
 
 
 fig, ax = plt.subplots()
+output = open("ScoreTests.txt", "a")
 
 # FUNC
 
@@ -51,9 +52,7 @@ def printScore(realData, predictedData):
     ax.annotate(info, (predictedData.index[int(len(pred)*0.5)],50))    
     ax.fill_between(predictedData.index, pred+pred*mape, pred-pred*mape, color='C1', alpha=0.3)
     
-    print("___SCORE___")
-    print(f"mape: {mape:.5}")
-    print(f"r2: {r2:.5}\n")
+    output.write(f"\n___SCORE___\nmape: {mape:.5}\nr2: {r2:.5}\n")
 
 
 # DATA PREP
@@ -95,7 +94,7 @@ model = ForecasterAutoreg(regressor=regr, lags=lags)
 start=time.time()
 model.fit(trainingSet["Value"])
 end= time.time()
-print(f"\nTRAINING TIME: {(end - start):.3} s")
+output.write(f"\nTRAINING TIME: {(end - start):.3} s")
 
 # PREDIZIONI
 
@@ -104,7 +103,7 @@ print(f"\nTRAINING TIME: {(end - start):.3} s")
 # predVal = makePred(model, trainingSet, lags, STEPS)
 # end = time.time()
 # ax.plot(predVal, label="predizione Training set")
-# print(f"predizione sul Training set: {int(end-start)} s")
+# output.write(f"predizione sul Training set: {int(end-start)} s")
 # printScore(allData.loc[predVal.index], predVal)
 
 
@@ -113,7 +112,7 @@ start = time.time()
 predVal = makePred(model, validationSet, lags, STEPS)
 end = time.time()
 ax.plot(predVal, label="predizione Validation set")
-print(f"predizione sul validation set: {int(end-start)} s")
+output.write(f"\npredizione sul validation set: {int(end-start)} s")
 printScore(allData.loc[predVal.index], predVal)
 
 
@@ -122,11 +121,12 @@ printScore(allData.loc[predVal.index], predVal)
 # predVal = makePred(model, strangeData, lags, STEPS)
 # ax.plot(predVal, label="predizione Strange set")
 # end = time.time()
-# print(f"predizione sulo Strange set: {int(end-start)} s")
+# output.write(f"\npredizione sulo Strange set: {int(end-start)} s")
 # #evito di inserire le previsioni non presenti nei dati per fare lo score
 # printScore(allData.loc[predVal.iloc[:-STEPS+1].index], predVal.iloc[:-STEPS+1])
 
-print(f"Predette le {STEPS/4} ore successive\nguardando le {lags/4} ore precedenti")
+output.write(f"\nPredette le {STEPS/4} ore successive\nguardando le {lags/4} ore precedenti\n\n\n")
 
 plt.legend()
 plt.show()
+output.close()
