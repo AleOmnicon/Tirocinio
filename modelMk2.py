@@ -11,6 +11,7 @@ import time
 from sklearn.metrics import r2_score, mean_absolute_percentage_error
 import matplotlib.pyplot as plt
 from skforecast.model_selection import grid_search_forecaster
+from datetime import datetime
 
 # CONST
 
@@ -23,6 +24,8 @@ lags = LAGS[0]
 
 fig, ax = plt.subplots()
 output = open("ScoreTests.txt", "a")
+
+output.write(f"{datetime.now().strftime('%d/%m/%Y %H:%M:%S')}")
 
 # FUNC
 

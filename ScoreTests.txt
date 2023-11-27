@@ -231,3 +231,26 @@ Predette le 0.25 ore successive
 guardando le 12.0 ore precedenti
 
 
+27/11/2023 12:57:23
+
+TRAINING TIME: 3.82 s
+predizione sul validation set: 8 s
+___SCORE___
+mape: 0.0029307
+r2: 0.98537
+
+Predette le 0.25 ore successive
+guardando le 12.0 ore precedenti
+
+
+27/11/2023 12:58:05
+TRAINING TIME: 3.74 s
+predizione sul validation set: 8 s
+___SCORE___
+mape: 0.0029307
+r2: 0.98537
+
+Predette le 0.25 ore successive
+guardando le 12.0 ore precedenti
+
+
