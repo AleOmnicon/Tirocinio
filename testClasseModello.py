@@ -37,3 +37,6 @@ modelSOL.fit(trainingSet["Value"])
 
 predNwarn = modelSOL.predict(96)
 print(predNwarn)
+
+score = modelSOL.score(validationSet, 1)
+print(score)

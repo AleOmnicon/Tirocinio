@@ -53,18 +53,20 @@ class ModelloSolignano:
         lenVal = len(validationSet)
         newPreds = []
         newTimes = []
-        lags = self.lags[-1]
+        lags = self.lags
         while(i + lags < lenVal):
+            print(f"step {i+1}/{lenVal - lags}", end="\r")
             batch = validationSet.iloc[i:i + lags]["Value"]
-            betterPred = self.predict(steps , batch)[0] # ignoro i warnings, ma non credo servano nella score
+            betterPred = self.model.predict(steps , batch) # ignoro i warnings, ma non credo servano nella score
             newPreds.append(betterPred.iloc[-1])
             newTimes.append(betterPred.index[-1])
             i += 1
         preds = pd.Series(newPreds, newTimes)
 
-        real = validationSet.iloc[steps:].values
+        
+        real = validationSet.loc[preds.iloc[:-steps].index].values
         pred = preds.iloc[:-steps].values
         mape = mean_absolute_percentage_error(real, pred)
         r_2 = r2_score(real, pred)
 
-        return mape, r_2
+        return {"mape":mape, "r_2":r_2}
