@@ -49,13 +49,17 @@ class ModelloSolignano:
         # per ora nella score ignoro i warnings
         i=0
         lenVal = len(validationSet)
-        preds = pd.Series()
-        while(i + self.lags < lenVal):
-            batch = validationSet.iloc[i:i + self.lags]["Value"]
+        newPreds = []
+        newTimes = []
+        lags = self.lags[-1]
+        while(i + lags < lenVal):
+            batch = validationSet.iloc[i:i + lags]["Value"]
             betterPred = self.predict(steps , batch)
-            preds.append(betterPred[0])
+            newPreds.append(betterPred.iloc[-1])
+            newTimes.append(betterPred.index[-1])
             i += 1
-        
+        preds = pd.Series(newPreds, newTimes)
+
         real = validationSet.iloc[steps:].values
         pred = preds.iloc[:-steps].values
         mape = mean_absolute_percentage_error(real, pred)
