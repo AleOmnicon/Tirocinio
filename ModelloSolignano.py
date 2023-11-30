@@ -1,18 +1,19 @@
 import pandas as pd
 import numpy as np
 from skforecast.ForecasterAutoreg import ForecasterAutoreg
+from xgboost import XGBRegressor
 from sklearn.metrics import r2_score, mean_absolute_percentage_error
 
 class ModelloSolignano:
     def __init__(self):
-        self.reg = None # Inserire il regressore scelto con i suoi iperparametri
+        self.reg = XGBRegressor() # Inserire il regressore scelto con i suoi iperparametri
         self.lags = 192 # inserire il lag generalmente ottimale
         self.model = ForecasterAutoreg(self.reg, self.lags)
 
     def fit(self, trainingData):
         self.model.fit(trainingData)
 
-    def predict(self, steps, lastWindow):
+    def predict(self, steps, lastWindow = None):
         preds = self.model.predict(steps, lastWindow)
         warnings = self._checkWarnings(preds)
         return preds, warnings
@@ -30,7 +31,7 @@ class ModelloSolignano:
 
         m = int(preds[-1] - preds[0])
         if m < 0:
-            warnings.append(f"Previsto un abbassamento del livello di {m}cm")
+            warnings.append(f"Previsto un abbassamento del livello di {abs(m)}cm")
         if m > 0:
             warnings.append(f"Previsto un innalzamento del livello di {m}cm")
         if m == 0:
@@ -40,13 +41,14 @@ class ModelloSolignano:
         mms = []
         while i < len(preds):
             mms.append(abs(preds[i] - preds[i - 1]))
-        if sum(mms) < 1:
+            i+=1
+        warnings.append(sum(mms))
+        if sum(mms) < 5:
             warnings.append("!Possibile anomalia rilevata")
 
         return warnings
     
-    def score(self, validationSet, steps):        
-        # per ora nella score ignoro i warnings
+    def score(self, validationSet, steps):
         i=0
         lenVal = len(validationSet)
         newPreds = []
@@ -54,7 +56,7 @@ class ModelloSolignano:
         lags = self.lags[-1]
         while(i + lags < lenVal):
             batch = validationSet.iloc[i:i + lags]["Value"]
-            betterPred = self.predict(steps , batch)
+            betterPred = self.predict(steps , batch)[0] # ignoro i warnings, ma non credo servano nella score
             newPreds.append(betterPred.iloc[-1])
             newTimes.append(betterPred.index[-1])
             i += 1
