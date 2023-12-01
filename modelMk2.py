@@ -93,7 +93,6 @@ start=time.time()
 model.fit(trainingSet["Value"])
 end= time.time()
 output.write(f"\nTRAINING TIME: {(end - start):.3} s")
-
 # PREDIZIONI
 
 # #sul training set
@@ -115,7 +114,7 @@ printScore(allData.loc[predVal.index], predVal)
 
 
 # #sul strange set
-# start = time.time() 
+# start = time.time()
 # predVal = makePred(model, strangeData, lags, STEPS)
 # ax.plot(predVal, label="predizione Strange set")
 # end = time.time()
