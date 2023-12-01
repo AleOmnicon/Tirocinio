@@ -35,8 +35,9 @@ modelSOL = ModelloSolignano()
 
 modelSOL.fit(trainingSet["Value"])
 
-predNwarn = modelSOL.predict(96)
-print(predNwarn)
+pred, warn = modelSOL.predict(96)
+print(pred)
+print(warn)
 
 score = modelSOL.score(validationSet, 96)
 print(score)
