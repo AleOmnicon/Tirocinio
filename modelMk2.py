@@ -18,8 +18,8 @@ from datetime import datetime
 DATE_LIMITER = "2023-08-01 00:00:00"
 TRAIN_SET_PERC = 0.8
 LAGS = [48, 96, 144, 192, 240, 288, 384, 480] # guardando le n/4 ore precedenti
-STEPS = 1 # predici le *n ore successive
-lags = LAGS[0]
+STEPS = 4*24 # predici le *n ore successive
+lags = LAGS[3]
 
 
 fig, ax = plt.subplots()
@@ -86,13 +86,8 @@ strangeData = allData[allData.index >= DATE_LIMITER]
 # MODEL TRAINING
 
 #base
-xgb = XGBRegressor(colsample_bytree=1, eta=0.1, max_depth=9, subsample=0.75)
-regr = Pipeline([
-    ("scaler", StandardScaler()),
-    ("reg", xgb)
-])
-
-model = ForecasterAutoreg(regressor=regr, lags=lags)
+xgb = XGBRegressor(colsample_bytree=0.5, eta=0.1, max_depth=8, subsample=0.75)
+model = ForecasterAutoreg(regressor=xgb, lags=lags)
 
 start=time.time()
 model.fit(trainingSet["Value"])

@@ -39,5 +39,5 @@ pred, warn = modelSOL.predict(96)
 print(pred)
 print(warn)
 
-score = modelSOL.score(validationSet, 96)
+score = modelSOL.score(validationSet, 48)
 print(score)

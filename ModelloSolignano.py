@@ -7,7 +7,7 @@ from sklearn.metrics import r2_score, mean_absolute_percentage_error
 class ModelloSolignano:
     """Prova documentazione: Classe base di forecasting per il livello della cisterna di Solignano"""
     def __init__(self):
-        self.reg = XGBRegressor() # Inserire il regressore scelto con i suoi iperparametri
+        self.reg = XGBRegressor(colsample_bytree=0.5, eta=0.1, max_depth=8, subsample=0.75) # Inserire il regressore scelto con i suoi iperparametri
         self.lags = 192 # inserire il lag generalmente ottimale
         self.model = ForecasterAutoreg(self.reg, self.lags)
 
@@ -114,7 +114,7 @@ class ModelloSolignano:
         lags = self.lags
         while(i + lags < lenVal):
             print(f"step {i+1}/{lenVal - lags}", end="\r")
-            batch = validationSet.iloc[i:i + lags].values
+            batch = pd.Series(validationSet.iloc[i:i + lags].values.ravel(), validationSet.iloc[i:i + lags].index)
             betterPred = self.model.predict(steps , batch) # ignoro i warnings, ma non credo servano nella score
             newPreds.append(betterPred.iloc[-1])
             newTimes.append(betterPred.index[-1])

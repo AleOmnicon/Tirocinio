@@ -254,3 +254,80 @@ Predette le 0.25 ore successive
 guardando le 12.0 ore precedenti
 
 
+01/12/2023 09:49:14
+TRAINING TIME: 4.09 s
+predizione sul validation set: 165 s
+___SCORE___
+mape: 0.012791
+r2: 0.5938
+
+Predette le 12.0 ore successive
+guardando le 12.0 ore precedenti
+
+
+01/12/2023 09:53:40
+TRAINING TIME: 3.93 s
+predizione sul validation set: 91 s
+___SCORE___
+mape: 0.01279
+r2: 0.5938
+
+Predette le 12.0 ore successive
+guardando le 12.0 ore precedenti
+
+
+01/12/2023 09:56:48
+TRAINING TIME: 1.89 s
+predizione sul validation set: 257 s
+___SCORE___
+mape: 0.013886
+r2: 0.52582
+
+Predette le 12.0 ore successive
+guardando le 12.0 ore precedenti
+
+
+01/12/2023 10:01:57
+TRAINING TIME: 38.1 s
+predizione sul validation set: 181 s
+___SCORE___
+mape: 0.011622
+r2: 0.61926
+
+Predette le 12.0 ore successive
+guardando le 48.0 ore precedenti
+
+
+01/12/2023 10:06:20
+TRAINING TIME: 6.58 s
+predizione sul validation set: 138 s
+___SCORE___
+mape: 0.010633
+r2: 0.68221
+
+Predette le 12.0 ore successive
+guardando le 48.0 ore precedenti
+
+
+01/12/2023 10:19:01
+TRAINING TIME: 6.19 s
+predizione sul validation set: 210 s
+___SCORE___
+mape: 0.011151
+r2: 0.65596
+
+Predette le 24.0 ore successive
+guardando le 48.0 ore precedenti
+
+
+01/12/2023 10:29:47
+TRAINING TIME: 10.5 s
+predizione sul validation set: 207 s
+___SCORE___
+mape: 0.010991
+r2: 0.67364
+
+Predette le 24.0 ore successive
+guardando le 48.0 ore precedenti
+
+
