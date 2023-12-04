@@ -16,7 +16,7 @@ allData = pd.read_csv(PATH,delimiter=";")
 allData.columns = ["Time", "Value"]
 allData["Time"] = pd.to_datetime(allData["Time"])
 allData.set_index("Time", inplace=True)
-allData = allData.resample(rule="15T").mean().ffill()
+allData = allData.resample(rule="60T").mean().ffill()
 
 ax.plot(allData, label="Rilevazioni")
 
@@ -35,9 +35,30 @@ modelSOL = ModelloSolignano()
 
 modelSOL.fit(trainingSet["Value"])
 
-pred, warn = modelSOL.predict(96)
-print(pred)
+pred, warn = modelSOL.predict(48)
 print(warn)
 
-score = modelSOL.score(validationSet, 48)
+score, warn, preds = modelSOL.score(allData, 24)
 print(score)
+
+anom = []
+date = []
+i = 0
+n = len(warn)
+while i < n:
+    w = warn.iloc[i]
+    if w["anomaly"] != None:
+        anom.append(w)
+        date.append(warn.index[i])
+    i += 1
+
+if len(anom) > 0:
+    alies = pd.Series(anom, date)
+    ax.plot(preds.loc[alies.iloc[:-24].index], "ro", label="Anomalie")
+
+ax.plot(preds, label="Predizioni")
+
+score_stable, warns_stable, preds_stable = modelSOL.score(stableData, 24)
+print(f"score su dataset stabile = {score_stable}")
+plt.legend()
+plt.show()

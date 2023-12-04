@@ -104,23 +104,23 @@ output.write(f"\nTRAINING TIME: {(end - start):.3} s")
 # printScore(allData.loc[predVal.index], predVal)
 
 
-#sul validation set
-start = time.time()
-predVal = makePred(model, validationSet, lags, STEPS)
-end = time.time()
-ax.plot(predVal, label="predizione Validation set")
-output.write(f"\npredizione sul validation set: {int(end-start)} s")
-printScore(allData.loc[predVal.index], predVal)
-
-
-# #sul strange set
+# #sul validation set
 # start = time.time()
-# predVal = makePred(model, strangeData, lags, STEPS)
-# ax.plot(predVal, label="predizione Strange set")
+# predVal = makePred(model, validationSet, lags, STEPS)
 # end = time.time()
-# output.write(f"\npredizione sulo Strange set: {int(end-start)} s")
-# #evito di inserire le previsioni non presenti nei dati per fare lo score
-# printScore(allData.loc[predVal.iloc[:-STEPS+1].index], predVal.iloc[:-STEPS+1])
+# ax.plot(predVal, label="predizione Validation set")
+# output.write(f"\npredizione sul validation set: {int(end-start)} s")
+# printScore(allData.loc[predVal.index], predVal)
+
+
+#sul strange set
+start = time.time()
+predVal = makePred(model, strangeData, lags, STEPS)
+ax.plot(predVal, label="predizione Strange set")
+end = time.time()
+output.write(f"\npredizione sulo Strange set: {int(end-start)} s")
+#evito di inserire le previsioni non presenti nei dati per fare lo score
+printScore(allData.loc[predVal.iloc[:-STEPS+1].index], predVal.iloc[:-STEPS+1])
 
 output.write(f"\nPredette le {STEPS/4} ore successive\nguardando le {lags/4} ore precedenti\n\n\n")
 

@@ -331,3 +331,14 @@ Predette le 24.0 ore successive
 guardando le 48.0 ore precedenti
 
 
+04/12/2023 08:37:28
+TRAINING TIME: 6.74 s
+predizione sulo Strange set: 541 s
+___SCORE___
+mape: 0.39069
+r2: -0.011428
+
+Predette le 24.0 ore successive
+guardando le 48.0 ore precedenti
+
+
