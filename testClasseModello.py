@@ -38,27 +38,31 @@ modelSOL.fit(trainingSet["Value"])
 pred, warn = modelSOL.predict(48)
 print(warn)
 
-score, warn, preds = modelSOL.score(allData, 24)
-print(score)
+# SCORING SU TUTTO IL DATASET
+# score, warn, preds = modelSOL.score(allData, 24)
+# print(score)
 
-anom = []
-date = []
-i = 0
-n = len(warn)
-while i < n:
-    w = warn.iloc[i]
-    if w["anomaly"] != None:
-        anom.append(w)
-        date.append(warn.index[i])
-    i += 1
+# anom = []
+# date = []
+# i = 0
+# n = len(warn)
+# while i < n:
+#     w = warn.iloc[i]
+#     if w["anomaly"] != None:
+#         anom.append(w)
+#         date.append(warn.index[i])
+#     i += 1
 
-if len(anom) > 0:
-    alies = pd.Series(anom, date)
-    ax.plot(preds.loc[alies.iloc[:-24].index], "ro", label="Anomalie")
+# if len(anom) > 0:
+#     alies = pd.Series(anom, date)
+#     ax.plot(preds.loc[alies.iloc[:-24].index], "ro", label="Anomalie")
 
-ax.plot(preds, label="Predizioni")
+# ax.plot(preds, label="Predizioni")
 
+# SCORING SUL DATASET STABILE
 score_stable, warns_stable, preds_stable = modelSOL.score(stableData, 24)
 print(f"score su dataset stabile = {score_stable}")
+
+
 plt.legend()
 plt.show()
