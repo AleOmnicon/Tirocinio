@@ -7,7 +7,9 @@ from sklearn.metrics import r2_score, mean_absolute_percentage_error
 class ModelloSolignano:
     """Prova documentazione: Classe base di forecasting per il livello della cisterna di Solignano"""
     def __init__(self):
-        self.reg = XGBRegressor(colsample_bytree=0.5, eta=0.1, max_depth=8, subsample=0.75) # Inserire il regressore scelto con i suoi iperparametri. colsample_bytree=0.5, eta=0.1, max_depth=8, subsample=0.75 sono i migliori per ora
+        self.reg = XGBRegressor(colsample_bytree=0.75, eta=0.1, max_depth=9, subsample=1) # Inserire il regressore scelto con i suoi iperparametri. 
+        #colsample_bytree=0.5, eta=0.1, max_depth=8, subsample=0.75 {'mape': 0.004154077996834914, 'r_2': 0.9096808688851759}
+        #colsample_bytree=0.75, eta=0.1, max_depth=9, subsample=1 {'mape': 0.0037701431237385963, 'r_2': 0.9181177089221616}
         self.lags = 48 # inserire il lag generalmente ottimale
         self.model = ForecasterAutoreg(self.reg, self.lags)
 
