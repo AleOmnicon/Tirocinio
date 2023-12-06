@@ -55,6 +55,7 @@ modelSOL.fit(trainingSet["Value"])
 # ax.plot(A_2_pred)
 # ax.plot(A_3_pred)
 
+# SOGLIE sul grafico
 d = [130.0, 300.0]
 p = pd.to_datetime(["2023-08-01T00:00:00", "2023-08-01T00:00:00"])
 alto = pd.Series(d, p)
@@ -64,7 +65,7 @@ ax.hlines(y=[130.0, 300.0], xmin=allData.index[0], xmax=allData.index[-1], color
 
 
 
-# SCORING SUL DATASET INSTABILE
+# SCORING SUL DATASET INSTABILE 
 score_unst, warn_unst, preds_unst = modelSOL.score(strangeData, 24)
 print(score_unst)
 
